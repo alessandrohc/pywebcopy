@@ -90,16 +90,19 @@ class SubPage(TagBase):
 
         _sub_page = self._get_sub_page()
 
-        if _sub_page is None or not getattr(_sub_page, '_stack'):
+        if _sub_page is None:
             return
 
-        with INDEX_LOCK:
-            elements = list(_sub_page.elements)
-            for elem in elements:
-                if elem.url not in INDEX:
-                    INDEX.add(elem.url)
-                else:
-                    _sub_page.elements.remove(elem)
+        _elements = list(getattr(_sub_page, '_stack', []))
+
+        if _elements:
+            with INDEX_LOCK:
+                elements = list(_sub_page.elements)
+                for elem in elements:
+                    if elem.url not in INDEX:
+                        INDEX.add(elem.url)
+                    else:
+                        _sub_page.elements.remove(elem)
 
         _sub_page.save_complete()
 

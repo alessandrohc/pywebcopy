@@ -8,10 +8,8 @@ import io
 import os
 import sys
 from shutil import rmtree
-
 from setuptools import setup, Command
 
-import pywebcopy
 
 # Package meta-data.
 NAME = 'pywebcopy'

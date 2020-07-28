@@ -84,7 +84,8 @@ class SubPage(TagBase):
         :rtype: WebPage
         :returns : used web page
         """
-        if not self.url.startswith(self.base_url) or \
+
+        if not self.url.startswith(getattr(self, "crawler_base_url", self.base_url)) or \
                 os.path.exists(self.file_path):
             return
 
@@ -136,6 +137,7 @@ class Crawler(WebPage):
 
         wrapper = SubPage
         setattr(wrapper, 'eMap', self._element_map)
+        setattr(wrapper, 'crawler_base_url', kwargs['base_url'])
         self.register_tag_handler('a', wrapper)
         self.register_tag_handler('form', wrapper)
 

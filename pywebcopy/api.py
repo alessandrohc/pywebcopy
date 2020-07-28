@@ -142,7 +142,7 @@ def save_website(url, project_folder, project_name=None, **kwargs):
 
     #: Not assigning to a variable so that it would be easy for garbage
     #: collection
-    c = Crawler()
+    c = Crawler(base_url=config['base_url'])
     c.url = config['project_url']
     c.path = config['project_folder']
 

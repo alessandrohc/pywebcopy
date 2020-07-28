@@ -230,8 +230,11 @@ class WebPage(Parser, _ElementFactory):
         for elem in elms:
             with POOL_LIMIT:
                 t = threading.Thread(name=repr(elem), target=elem.run)
-                t.start()
                 self._threads.append(t)
+                t.start()
+                if t.is_alive():
+                    t.join()
+                        
 
     def save_html(self, file_name=None, raw_html=False):
         """Saves the html of the page to a default or specified file.

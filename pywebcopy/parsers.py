@@ -165,7 +165,13 @@ class Parser(object):
 
         if self.root is not None:
             # WaterMarking :)
-            self.root.insert(0, Comment(MARK.format('', __version__, utx.url, utc_now(), '')))
+            try:
+                self.root.insert(0, Comment(MARK.format('', __version__, utx.url, utc_now(), '')))
+            except Exception:
+                LOGGER.error(
+                'Error inserting comment with watermark in the url: %s'
+                % (self.url)
+            )
 
         # There are internal links present on the html page which are files
         # that includes `#` and `javascript:` and 'data:base64;` type links

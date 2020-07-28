@@ -109,4 +109,4 @@ class RobotsTxtParser(RobotFileParser):
             self.parse(f.text.splitlines())
 
     def can_fetch(self, url, user_agent=None):
-        return super(RobotsTxtParser, self).can_fetch(user_agent or self.user_agent, url)
+        return RobotFileParser.can_fetch(self, user_agent or self.user_agent, url)

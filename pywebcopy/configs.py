@@ -18,6 +18,7 @@ import requests
 from .exceptions import AccessError
 from .globals import safe_file_exts, safe_http_headers
 from .structures import RobotsTxtParser
+from six import string_types
 
 __all__ = ['default_config', 'config', 'SESSION', 'AccessAwareSession']
 
@@ -226,7 +227,7 @@ class AccessAwareSession(requests.Session, RobotsTxtParser):
         return resp
 
     def load_rules_from_url(self, robots_txt_url):
-        assert isinstance(robots_txt_url, str), "Please pass in valid arguments!"
+        assert isinstance(robots_txt_url, string_types), "Please pass in valid arguments!"
         assert robots_txt_url.endswith('/robots.txt'), "Not a valid rules url!"
 
         self.set_url(robots_txt_url)

@@ -17,7 +17,7 @@ from mimetypes import guess_all_extensions
 from shutil import copyfileobj
 from typing import IO
 
-from six import binary_type
+from six import binary_type, string_types
 from six.moves.urllib.request import pathname2url
 from .configs import config, SESSION
 from .core import is_allowed
@@ -89,8 +89,8 @@ class FileMixin(URLTransformer):
         url = self.url
 
         assert file_path, "Download location needed to be specified!"
-        assert isinstance(file_path, str), "Download location must be a string!"
-        assert isinstance(url, str), "File url must be a string!"
+        assert isinstance(file_path, string_types), "Download location must be a string!"
+        assert isinstance(url, string_types), "File url must be a string!"
 
         if os.path.exists(file_path):
             if not config['over_write']:
@@ -176,8 +176,8 @@ class FileMixin(URLTransformer):
 
         assert hasattr(file_like_object, 'read'), "A file like object with read method is required!"
         assert file_path, "Download location needed to be specified!"
-        assert isinstance(file_path, str), "Download location must be a string!"
-        assert isinstance(url, str), "File url must be a string!"
+        assert isinstance(file_path, string_types), "Download location must be a string!"
+        assert isinstance(url, string_types), "File url must be a string!"
 
         if os.path.exists(file_path):
             if not config['over_write']:
@@ -485,11 +485,11 @@ class _ElementFactory(object):
         :type handler: TagBase | type(TagBase)
         :param handler: Tag handler for the tag
         """
-        assert isinstance(tag, str), "Tag must of string type."
+        assert isinstance(tag, string_types), "Tag must of string type."
         assert issubclass(handler, TagBase), "Handler must be subclassed from TagBase."
         self._element_map[tag] = handler
 
     def deregister_tag_handler(self, tag):
         """Removes the handler for a specified html tag."""
-        assert isinstance(tag, str), "Tag must be of string type."
+        assert isinstance(tag, string_types), "Tag must be of string type."
         self._element_map.pop(tag, None)

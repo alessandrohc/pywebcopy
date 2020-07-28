@@ -137,7 +137,7 @@ class URLTransformer(object):
 
     @default_filename.setter
     def default_filename(self, o):
-        assert isinstance(o, str)
+        assert isinstance(o, basestring)
         self._default_fn = o
 
     def _hex(self):

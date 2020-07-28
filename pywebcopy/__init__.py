@@ -67,8 +67,7 @@ logging.logProcesses = 0
 logging._srcfile = None
 c_handler = logging.StreamHandler()
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.ERROR,
     handlers=[c_handler],
     format='%(name)-10s - %(levelname)-8s - %(message)s'
 )
-c_handler.setLevel(logging.ERROR)

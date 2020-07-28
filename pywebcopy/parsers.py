@@ -55,7 +55,7 @@ class Parser(object):
     def __init__(self):
         self.root = None
         self._tree = None
-        self.encoding = 'iso-8859-1'
+        self.encoding = 'UTF-8'
         self._source = None
         self._stack = list()
         self._parseComplete = False
@@ -319,7 +319,7 @@ class MultiParser(object):  # pragma: no cover
         self._encoding = encoding  # represents your provided encoding
         self.element = element  # internal lxml element
         self._decoded_html = False  # internal switch to tell if html has been decoded
-        self.default_encoding = 'iso-8859-1'  # a standard encoding defined by www
+        self.default_encoding = 'UTF-8'  # a standard encoding defined by www
 
     @property
     def raw_html(self):
@@ -362,7 +362,7 @@ class MultiParser(object):  # pragma: no cover
         return html
 
     @staticmethod
-    def decode_html(html_string, encoding=None, default_encoding='iso-8859-1'):
+    def decode_html(html_string, encoding=None, default_encoding='UTF-8'):
         """Decodes a html string into a unicode string.
         If explicit encoding is defined then
         it would use it otherwise it will decoding it using

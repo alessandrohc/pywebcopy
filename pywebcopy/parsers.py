@@ -152,7 +152,7 @@ class Parser(object):
         assert hasattr(source, 'read'), "File like object is required!"
         # assert self._element_factory is not None
         # assert hasattr(self._element_factory, 'make_element')
-        LOGGER.info(
+        LOGGER.debug(
             'Parsing tree with source: <%r> encoding <%s> and parser <%r>'
             % (self._source, self.encoding, parser)
         )
@@ -372,7 +372,7 @@ class MultiParser(object):  # pragma: no cover
         tried = [encoding, default_encoding]
 
         try:
-            LOGGER.info("Using default Codec on raw_html!")
+            LOGGER.debug("Using default Codec on raw_html!")
 
             converted = UnicodeDammit(html_string, [encoding], is_html=True)
 

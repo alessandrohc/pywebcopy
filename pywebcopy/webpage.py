@@ -218,14 +218,14 @@ class WebPage(Parser, _ElementFactory):
         """Save only the linked files to the disk.
         """
         if not self.elements:
-            LOGGER.error("No elements found for downloading!")
+            LOGGER.debug("No elements found for downloading!")
             return
 
         LOGGER.info("Starting save_assets Action on url: {!r}".format(self.utx.url))
 
         elms = list(self.elements)
 
-        LOGGER.log(100, "Queueing download of <%d> asset files." % len(elms))
+        LOGGER.debug("Queueing download of <%d> asset files." % len(elms))
 
         for elem in elms:
             with POOL_LIMIT:

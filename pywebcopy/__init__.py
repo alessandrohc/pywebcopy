@@ -71,4 +71,4 @@ logging.basicConfig(
     handlers=[c_handler],
     format='%(name)-10s - %(levelname)-8s - %(message)s'
 )
-c_handler.setLevel(logging.INFO)
+c_handler.setLevel(logging.ERROR)

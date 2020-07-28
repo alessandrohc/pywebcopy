@@ -8,10 +8,8 @@ import io
 import os
 import sys
 from shutil import rmtree
-
 from setuptools import setup, Command
 
-import pywebcopy
 
 # Package meta-data.
 NAME = 'pywebcopy'
@@ -20,7 +18,7 @@ URL = 'https://github.com/rajatomar788/pywebcopy/'
 LICENSE = 'Apache License 2.0'
 EMAIL = 'rajatomar788@gmail.com'
 AUTHOR = 'Raja Tomar'
-VERSION = pywebcopy.__version__
+VERSION = '6.3.0'
 
 # What packages are required for this module to be executed?
 REQUIRED = [

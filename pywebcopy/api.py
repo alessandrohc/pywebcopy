@@ -103,7 +103,7 @@ def save_webpage(url, project_folder, html=None, project_name=None,
         open_new_tab(wp.utx.file_path)
 
 
-def save_website(url, project_folder, project_name=None, **kwargs):
+def save_website(url, project_folder, project_name=None, popup=False, **kwargs):
     """Easiest way to clone a complete website.
 
     You need a functioning url to be able to save it.
@@ -163,4 +163,5 @@ def save_website(url, project_folder, project_name=None, **kwargs):
     if config['zip_project_folder']:
         zip_project(config['join_timeout'])
 
-    open_new_tab(path)
+    if popup:
+        open_new_tab(path)

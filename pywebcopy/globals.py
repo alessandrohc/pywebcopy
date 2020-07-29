@@ -112,12 +112,12 @@ MARK = textwrap.dedent("""
 """Matches any url() declaration in a css file."""
 # https://www.regextester.com/106463
 # CSS_URLS_RE = re.compile(b'''url\(['"]?([^)])["']?\)''', re.I)
-CSS_URLS_RE = re.compile(('url\((' + '["][^"]*["]|' + "['][^']*[']|" + '[^)]*)\)').encode(), re.I)
+CSS_URLS_RE = re.compile(r"""url\((?!['"]?(?:data:|https?:|\/\/))(['"]?)([^'")]*)\1\)""".encode(), re.I)
 
 """Matches any @import declaration in a css file."""
 # https://regex101.com/r/lC1hO3/2
 # CSS_IMPORTS_RE = re.compile(b'''@import\s*'"['"]\s*''', re.I)
-CSS_IMPORTS_RE = re.compile(('@import "(.*?)"').encode())
+CSS_IMPORTS_RE = re.compile(r"""@import\s?['"](.*)['"]""".encode())
 
 """Both urls and imports combined."""
 # CSS_FILES_RE = re.compile(rb'''(?:url\((?!['"]?(?:https?:|//))(['"]?)([^'")])\1\))|(?:@import.?"'["'].*?)''', re.I)
